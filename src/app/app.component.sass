@@ -1,41 +1,5 @@
-*
-  font-family: Arial, Helvetica, sans-serif
-  margin: 0
-  padding: 0
-
-
-body
-  background: #D3D3D3
-  color: #3C3528
-  font-weight: bold
-  text-align: center
-
-
-img
-  border-radius: 10px
-  height: 250px
-  margin-right: .5rem
-  margin-left: .5rem
-  width: 150px
-
-
 .button
   margin: .5rem
-
-
-button
-  background: #03699B
-  border: none
-  color: white
-  font-weight: bold
-  padding: 1rem
-
-
-button:hover
-  color: #F58300
-  font-weight: bold
-  cursor: pointer
-
 
 #title
   background: #03699B
@@ -44,24 +8,22 @@ button:hover
   font-weight: 300
   margin-bottom: 1rem
 
-
 #position
   font-size:1.3rem
   margin-bottom: 1rem
-
 
 #displayPosition
   font-size: 2rem
   margin-bottom: 1rem
 
-
 #cards
   margin-bottom: 1rem
-
 
 #foldBTN, #raiseBTN
   width: 73px
 
+#raiseBTN
+  margin-right: 10px
 
 #displayResult
   color: #03699B
@@ -72,22 +34,21 @@ button:hover
 #displayResult.flashit
   animation: flashit 3.5s
 
-
-// @keyframes flashit
-// 	0%  opacity: 1
-// 	100%  opacity: 0
-
+@keyframes flashit
+  0%
+    opacity: 1
+  100%
+    opacity: 0
 
 #winStreak
   margin-bottom: 1rem
 
-
 #longeststreak
   margin-bottom: 1rem
-
 
 @media (max-width: 400px)
   img
     height: 150px
     width: 90px
+
 
