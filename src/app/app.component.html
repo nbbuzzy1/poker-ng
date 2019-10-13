@@ -1,21 +1,20 @@
 <app-header></app-header>
-<div id="position">Position: {{ position }}</div>
-<div id="displayPosition"></div>
+<div id="position">Position: {{ positionName }}</div>
 <div id="cards">
   <img [src]="url1" id="displayCardOne">
   <img [src]="url2" id="displayCardTwo">
 </div>
 <div class="button">
   <span>
-    <button id="raiseBTN">Raise</button>
-    <button id="foldBTN">Fold</button>
+    <button id="raiseBTN" (click)="verifyRaise()">Raise</button>
+    <button id="foldBTN" (click)="verifyFold()">Fold</button>
   </span>
 </div>
 <div class="button">
-  <button id="startOver">Start Over</button>
+  <button id="startOver" (click)="drawCards()">Start Over</button>
 </div>
-<p id="displayResult" *ngIf="correct">Correct!</p>
-<p id="displayResult" *ngIf="wrong">Wrong!</p>
-<p id="winStreak" *ngIf="correct || wrong">{{ count }}</p>
-<p id="longestStreak" *ngIf="correct || wrong">{{ longestWinStreak }}</p>
+<p *ngIf="currentWinStreak > 0 && flashTrue">Correct!</p>
+<p *ngIf="currentWinStreak === 0 && !flashTrue">Wrong!</p>
+<p id="winStreak" *ngIf="currentWinStreak > 0">Current Win Streak: {{ currentWinStreak }}</p>
+<p id="longestStreak" *ngIf="currentWinStreak > 0">Longest Win Streak: {{ longestWinStreak }}</p>
 
