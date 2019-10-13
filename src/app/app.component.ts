@@ -8,51 +8,50 @@ import { table } from './raising-hands';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
+  public url1: string = "";
+  public url2: string = "";
+  public position: string = "";
 
   ngOnInit() {
-  //random card one
-  let cardOne = deck[Math.floor(Math.random() * 52)];
 
-  //random card two (minus card one from deck)
-  deck.splice(deck.indexOf(cardOne), 1);
-  let cardTwo = deck[Math.floor(Math.random() * 51)];
-
-  //display random cards
-  const getCardOne = () => {
-  document.getElementById("displayCardOne").innerHTML = ('<img src="' + 'assets/images/' + cardOne + '" width="250px">')
-}
-  const getCardTwo = () => {
-    document.getElementById("displayCardTwo").innerHTML = ('<img src="' + 'assets/images/' + cardTwo + '" width="250px">')
-  }
-
-  //set up position and display position name
-  let position = Math.floor(Math.random() * 8);
-  let positionName = ['Under the Gun', 'Under the Gun +1', 'Under the Gun +2', 'Lowjack', 'Highjack', 'Cutoff', 'Button', 'Small Blind'];
-  const showPosition = () => {
-    document.getElementById("displayPosition").innerHTML = positionName[position];
-  }
-  getCardOne()
-  getCardTwo()
-  showPosition()
-
-  //set up complete hand for comparison purposes
-  let suited = '';
-  let offsuit = '';
-  let completeHand = '';
-  let completeHand2 = '';
-  const cardComparison = () => {
-    if (cardOne[1] === cardTwo[1]) {
-      suited = "s";
-    } else if (cardOne[0] === cardTwo[0]) {
-      offsuit ='';
-      suited = '';
-    } else if (cardOne[1] !== cardTwo[1]) {
-      offsuit = "o";
+    const setImageUrl = (cardOne, cardTwo) => {
+      this.url1 = `assets/images/${cardOne}`;
+      this.url2 = `assets/images/${cardTwo}`;
     }
-    completeHand = cardOne[0] + cardTwo[0] + suited + offsuit;
-    completeHand2 = cardTwo[0] + cardOne[0] + suited + offsuit;
-  }
-  cardComparison();
+
+    const setCompleteHand = (cardOne, cardTwo) => {
+      let suited = "";
+      let offsuit = "";
+      let completeHand = "";
+      let completeHand2 = "";
+      if (cardOne[1] === cardTwo[1]) {
+        suited = "s";
+      } else if (cardOne[0] === cardTwo[0]) {
+        offsuit ='';
+        suited = '';
+      } else if (cardOne[1] !== cardTwo[1]) {
+        offsuit = "o";
+      }
+      completeHand = cardOne[0] + cardTwo[0] + suited + offsuit;
+      completeHand2 = cardTwo[0] + cardOne[0] + suited + offsuit;
+    }
+
+    const drawCards = () => {
+      const cardOne = deck[Math.floor(Math.random() * 52)];
+      const updatedDeck = deck.filter((card) => card !== cardOne);
+      const cardTwo = updatedDeck[Math.floor(Math.random() * 51)];
+      setImageUrl(cardOne, cardTwo);
+      setCompleteHand(cardOne, cardTwo);
+    }
+
+    const setTablePosition = () => {
+      const position = Math.floor(Math.random() * 8);
+      const positionName = ['Under the Gun', 'Under the Gun +1', 'Under the Gun +2', 'Lowjack', 'Highjack', 'Cutoff', 'Button', 'Small Blind'];
+      this.position = positionName[position]
+    }
+
+
+
 
   //analyzing whether raise or fold was correct or wrong
   let count = 0;
@@ -167,20 +166,20 @@ export class AppComponent implements OnInit {
       '2D.jpg',
       '2H.jpg'
     ];
-    cardOne = deck[Math.floor(Math.random() * 52)];
-    deck.splice(deck.indexOf(cardOne), 1);
-    cardTwo = deck[Math.floor(Math.random() * 51)];
-    getCardOne();
-    getCardTwo();
-    suited = '';
-    offsuit = '';
-    completeHand = '';
-    completeHand2 = '';
-    cardComparison();
-    completeHand = cardOne[0] + cardTwo[0] + suited + offsuit;
-    completeHand2 = cardTwo[0] + cardOne[0] + suited + offsuit;
-    position = Math.floor(Math.random() * 8);
-    showPosition();
+    // cardOne = deck[Math.floor(Math.random() * 52)];
+    // deck.splice(deck.indexOf(cardOne), 1);
+    // cardTwo = deck[Math.floor(Math.random() * 51)];
+    // getCardOne();
+    // getCardTwo();
+    // suited = '';
+    // offsuit = '';
+    // completeHand = '';
+    // completeHand2 = '';
+    // cardComparison();
+    // completeHand = cardOne[0] + cardTwo[0] + suited + offsuit;
+    // completeHand2 = cardTwo[0] + cardOne[0] + suited + offsuit;
+    // position = Math.floor(Math.random() * 8);
+    // showPosition();
   };
   }
 }
