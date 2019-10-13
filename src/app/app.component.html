@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div id="position">Position: </div>
+<div id="position">Position: {{ position }}</div>
 <div id="displayPosition"></div>
 <div id="cards">
   <img [src]="url1" id="displayCardOne">
@@ -14,8 +14,8 @@
 <div class="button">
   <button id="startOver">Start Over</button>
 </div>
-<p id="displayResult"></p>
-<p id="winStreak"></p>
-<p id="longestStreak"></p>
-<img alt="">
+<p id="displayResult" *ngIf="correct">Correct!</p>
+<p id="displayResult" *ngIf="wrong">Wrong!</p>
+<p id="winStreak" *ngIf="correct || wrong">{{ count }}</p>
+<p id="longestStreak" *ngIf="correct || wrong">{{ longestWinStreak }}</p>
 

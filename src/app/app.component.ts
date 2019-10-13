@@ -11,6 +11,10 @@ export class AppComponent implements OnInit {
   public url1: string = "";
   public url2: string = "";
   public position: string = "";
+  public correct: boolean;
+  public wrong: boolean;
+  public count: number = 0;
+  public longestWinStreak: number = 0;
 
   ngOnInit() {
 
@@ -54,12 +58,10 @@ export class AppComponent implements OnInit {
 
 
   //analyzing whether raise or fold was correct or wrong
-  let count = 0;
-  let longestStreak = 0;
   let result = document.getElementById("displayResult");
-  result.addEventListener('animationend', function() {
-    result.classList.remove('flashit');
-  });
+  // result.addEventListener('animationend', function() {
+  //   result.classList.remove('flashit');
+  // });
   const correct = () => {
     result.innerHTML = "Correct!";
     result.classList.add('flashit');
