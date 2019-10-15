@@ -1,0 +1,4 @@
+<p [hidden]="!this.preFlopRaiseService.correct" class="display-result">Correct!</p>
+<p [hidden]="!this.preFlopRaiseService.wrong" class="display-result">Wrong!</p>
+<p class="win-streak" *ngIf="this.preFlopRaiseService.currentWinStreak > 0">Current Win Streak: {{ this.preFlopRaiseService.currentWinStreak }}</p>
+<p class="longest-streak" *ngIf="this.preFlopRaiseService.currentWinStreak > 0">Longest Win Streak: {{ this.preFlopRaiseService.longestWinStreak }}</p>
